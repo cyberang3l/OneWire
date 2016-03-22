@@ -121,8 +121,14 @@ sample code bearing this copyright.
 
 #include "OneWire.h"
 
+OneWire::OneWire() {}
 
 OneWire::OneWire(uint8_t pin)
+{
+	setPin(pin);
+}
+
+void OneWire::setPin(uint8_t pin)
 {
 	pinMode(pin, INPUT);
 	bitmask = PIN_TO_BITMASK(pin);
@@ -131,7 +137,6 @@ OneWire::OneWire(uint8_t pin)
 	reset_search();
 #endif
 }
-
 
 // Perform the onewire reset function.  We will wait up to 250uS for
 // the bus to come high, if it doesn't then it is broken or shorted

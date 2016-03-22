@@ -266,7 +266,16 @@ class OneWire
 #endif
 
   public:
+    /* Add a constructor that does nothing.
+     * This is useful is we want to initialize an array of OneWire objects.
+     */
+    OneWire();
     OneWire( uint8_t pin);
+
+    /* Since we added a constructor that does nothing, add
+     * a setPin function to initialize the OneWire pins manually.
+     */
+    void setPin(uint8_t pin);
 
     // Perform a 1-Wire reset cycle. Returns 1 if a device responds
     // with a presence pulse.  Returns 0 if there is no device or the
